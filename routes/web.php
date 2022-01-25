@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use app\Http\Controllers\admin\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +14,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/campaign', function(){
+    return view("vote_campaign");
+});
+
+Route::prefix('admin')->name('admin.')->group(function(){
+  Route::middleware(['guest'])->group(function(){
+
+  });
+  Route::middleware(['auth'])->group(function(){
+
+  });
+});

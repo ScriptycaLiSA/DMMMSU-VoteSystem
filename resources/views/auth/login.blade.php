@@ -49,7 +49,13 @@
                                     </label>
                                 </div>
                             </div>
+                            <ul>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/campaign') }}">{{ __('Login') }}</a>
+                            </li>
+                          </ul>
                         </div>
+
 
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
