@@ -16,17 +16,12 @@ use app\Http\Controllers\admin\AdminController;
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\Controller::class, 'home'])->name('banner');
+
+Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/voter', [App\Http\Controllers\VoterController::class, 'voterView'])->name('voter');
 
 Route::get('/campaign', function(){
     return view("vote_campaign");
-});
-
-Route::prefix('admin')->name('admin.')->group(function(){
-  Route::middleware(['guest'])->group(function(){
-
-  });
-  Route::middleware(['auth'])->group(function(){
-
-  });
 });
