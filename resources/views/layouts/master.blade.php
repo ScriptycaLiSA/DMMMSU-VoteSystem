@@ -40,14 +40,17 @@
                       <li class="nav-item">
                         <a class="nav-link" href="{{ url('/login') }}">{{ __('Login your Account') }}</a>
                       </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/about') }}">{{ __('About') }}</a>
+                      </li>
                     </ul>
                 </div>
             </div>
         </nav>
+
         <main class="py-4">
             @yield('content')
         </main>
-        
     </div>
 </body>
 </html>

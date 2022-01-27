@@ -13,12 +13,10 @@ Route::get('/voter', [App\Http\Controllers\VoterController::class, 'voterView'])
 
 Route::get('/webm', [App\Http\Controllers\admin\WebmController::class, 'index'])->name('dashboard');
 
+Route::get('/about', [App\Http\Controllers\Controller::class, 'about'])->name('about');
+
 Route::get('/campaign', function(){
     return view("vote_campaign");
 });
 
 Auth::routes();
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

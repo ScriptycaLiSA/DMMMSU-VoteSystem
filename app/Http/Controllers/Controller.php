@@ -14,4 +14,7 @@ class Controller extends BaseController
     public function home(){
       return view('banner');
     }
+    public function about(){
+      return view('about');
+    }
 }
