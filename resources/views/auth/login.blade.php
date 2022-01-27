@@ -1,6 +1,6 @@
 @extends('layouts.master')
-@section('title', 'Login')
 
+@section('title', 'Login')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -42,13 +42,6 @@
 
                         <div class="row mb-3">
                             <div class="col-md-6 offset-md-4">
-                              <label class="form-control-label" for="remember">
-                                  {{ __('Select your Account Type:') }}
-                              </label>
-                              <select class="form-control form-control-sm">
-                                <option>{{ __('VOTER') }}</option>
-                                <option>{{ __('ADMIN') }}</option>
-                              </select>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
@@ -58,7 +51,6 @@
                                 </div>
                             </div>
                         </div>
-
 
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">

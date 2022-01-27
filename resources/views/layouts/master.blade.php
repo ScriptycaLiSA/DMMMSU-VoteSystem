@@ -15,7 +15,6 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -39,16 +38,16 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                       <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login your Account') }}</a>
+                        <a class="nav-link" href="{{ url('/login') }}">{{ __('Login your Account') }}</a>
                       </li>
                     </ul>
                 </div>
             </div>
         </nav>
-
         <main class="py-4">
             @yield('content')
         </main>
+        
     </div>
 </body>
 </html>
