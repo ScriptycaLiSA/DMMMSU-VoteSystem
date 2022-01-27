@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.logged_in')
 
 @section('title', 'Webmaster Panel')
 @section('content')
@@ -16,163 +16,42 @@
             </div>
 
             <nav class="mt-10">
-                <a class="flex items-center mt-4 py-2 px-6 bg-gray-700 bg-opacity-25 text-gray-100" href="/">
-                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"></path>
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"></path>
-                    </svg>
-
+                <a class="flex items-center mt-4 py-2 px-6 bg-gray-700 bg-opacity-25 text-gray-100" href="">
+                    <img class="h-6 w-6" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABmJLR0QA/wD/AP+gvaeTAAAA+0lEQVR4nO2ZUQqCUBQFD324qLD1ZQvVbdTPy0SSEHrOA2dACoLOMH3FTUTedEkeSaYkz0rPmGQoW63tZ6g4vH6GBvczlg+v3z78E30+v0Rr+3Od2mztIPuXAwabxgC0AI0BaAEaA9ACNAagBWgMQAvQGIAWoDEALUBjAFqAxgC0AI0BaAGaZYCpvPYV926rrSX0/qGHiXuD++mKxLjzy/Y8v05j5L6InBz6Pk/v4/d5eh+/z9P7c53abO0g+/4XoAVoDEAL0BiAFqAxAC1AYwBagMYAtACNAWgBGgPQAjQGoAVoDEAL0Bhg8Z6+z9P7+H2e3sfv8/S+nJIXmkLImDnbzzAAAAAASUVORK5CYII="/>
                     <span class="mx-3">Dashboard</span>
                 </a>
 
-                <a class="flex items-center mt-4 py-2 px-6 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100"
-                    href="/ui-elements">
-                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z">
-                        </path>
-                    </svg>
-
-                    <span class="mx-3">UI Elements</span>
+                <a class="flex items-center mt-4 py-2 px-6 bg-gray-700 bg-opacity-25 text-gray-100" href="">
+                    <img class="h-6 w-6" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABmJLR0QA/wD/AP+gvaeTAAAFbklEQVR4nO3bW4xdYxQH8N+Yjoh2pNoatA86gjaq0iCqJOraxi1udUmINB4IkYZIJaSIRFxaBA9CpaTiTlHBg2gR+sBT69Io4l7UvRJttdXjYe2dOe1cztn77H1OZ/gnOzOz97fWt9Z/f5e11renXevRhiMxHXtjLf5pqUVNRDfeQ6XqWosZrTSqWTgQ3+F3XIFDcBZWYzPObp1p5SN1/idM3uHZcLxlCJMwkPMphiwJ9TifYsiRkMX5FEOGhDzOpxj0JDTifIpBS0IRzqcYdCSkzq8Te3wR6MQKQcJJBeksBWU4n6ITn+BrdBSsuxCU6XyKC0XYfHRJ+nOjGc7DNEHAGSX2kRlj8JXynYd5goADSu4nE+ZjK44quZ9p2IBXSu4nM1bhjZL7mIb1YhHsKrmvzFiDF0vUX+38viX2kxuPi9x+nxJ07/TOE5HeRryLEQXqrXZ+bIF6S8G5Ikp7RzEkDCrnU5wjSFghora8SJ1fYxA5nyIdCXlJaJrzbQM8G4XrcapY2AZq2xc6MQx/CTKyYISI8zfg74yyKSr4Ea/hNrFA90J/TnWJt9eNZSLCG4wYjxPxBY7Bz/UKLhJvbXo5djUVxwlfHs4itB6LSzGnNXhMP1Nglz7u7Y49xAHFUMHHGCl82w59EZCuC9vKtKjJSH3pteb1RcB/Cv8T0Me9zeJ4ush4vtUYIWoVdccjH4pj66EwQnbB+6JeUTcuEZHUYuxXglHNwnixBVZwcVbhm8SQqQzya7OoIfaJWvH9aaL29iy+rNF2Z0M3zhc+vJZXSVp+nlmQUc3ETGH7tIEaDWuOLX2iQ6S6m/CnqCY1Hc1e5SfhDpHnbxBZ5o8iZV6JBZpc62/WCOjC7Zgt9uM38QS+T56PE8dcc3C1KLBegz+aZF+/KGINmIRvxBCfLwot/WG0GAUb8TkObaDfutaAWtgTz8tfip6A3/AtDssgd4Se7wr2z9l3IQS0iYJCew7Z4fhInBWOzyHfLSo4q7FbDvlCCJiSKMlTGZon0tDj62zfJub9pyIUP0d8BFHBdTn6L4SAyfKdw3eKof9Cne3bcH/S13IRt2/BQXhJVHN6FTNqoBAC4GDZK8Kzks6PraNttfPzk3sTk78vFVOwgjMz2lAIAV3ilCdrQrRQzN907ZiMJ7FUhKYpqp1fUHXvgeTekWKr/hUPZrShEALyboPLxBkhcabwm1gM14h14Sr9O39vcu/OKn0r8HpGG1pKwCosSX6/KNExRYS/SwQJb+nt/H3Jvbt30LcEH2S0oS4CygqFN+o5Elub/JwhFrYL8YiYFrdgrp43Pwf34Nod9HWKfKHpyDsCnhUnuimeFm/9yj7aDvTmU6zBMxltaOkUmJvIpQFQh/h6ZEcSqp2/qx9d3cnzORltaCkB+ydy1ZWYahJuFWd1abmqP+fhxkQm607UUgLgZZHNjam614GHhENpueqGAXTsleh4Lkf/LSdgonDwVb1ziW6cbODvidpFKWuT+AAzKwohYGqi5JSc8pcl8otk+653V7FTVEQNIQ9OSeSn5pRHz1y+pAEdN4sh/7YIq2thkog+txl4etTCbNsvxLnQIebgwkaU4AKR0GwVW+IsUQ9sT66xOC95tlWEvrMa7HORiEAbrno9Jr4XGFOrYQ2MEvXAdXpq9luTK/37h6TNyAb76hKB06O1GtaT5U0QhY2l4i1VGjItos+pIhIcq+e/RT8SR1iNHsu3idD5dDGdPmtQHyIIqYiMbmc+NO3EU8LWq+oRyJLnXysytF/EXr5cVHVb/Y/O7aKqfAIuF4XV60ROUTgOF3tz9bzdWa4tiW1Ziq+ZKz0pRov0dpx8BcsisUmsISvF7pEJ/wI/mcI3qtzB0AAAAABJRU5ErkJggg=="/>
+                    <span class="mx-3">Votes</span>
                 </a>
 
-                <a class="flex items-center mt-4 py-2 px-6 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100"
-                    href="/tables">
-                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
-                        </path>
-                    </svg>
-
-                    <span class="mx-3">Tables</span>
+                <a class="flex items-center mt-4 py-2 px-6 bg-gray-700 bg-opacity-25 text-gray-100" href="">
+                    <img class="h-6 w-6" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QA/wD/AP+gvaeTAAABmUlEQVRYhe2WzUrDQBSFv7pQxAoKWh9Bt6LoslbElWhbFV9DRSnqSrvyZ6ErfQp/36O6VWrxASpolUK1bVzMDYFI4ySZLIQcuARmzj3nJnPvEIgR4x8iBRSBe+BTogQcAMNRm68ANcDqEO9APkrzthhdAWmgT2IGuJa9FpAzbZ7CefNtD15BOG/AkMkCijhv/hduhbtvsoAHEU1rcDPCLZks4ENEkxrcfuHWdIS7NAtoavIAEn5ydAuoyHNSg2tznk0WcCnPdQ3uhivHCEaAV9TZFjx4O8KpokbXKHKoc7VQo5ZBNWUSmAXuZK8JZE2b21hG3XSdruKWcCLBIlD2MLejDCyYNE4Axy6TF2AU6JUYkzV7vw0c4oxkKJyI6Dewi9OMp6jmHAHOcJpvT7gWcBTWPCtCX8CcrOWBBr8/fQOn+eYlxwKWgpr34HzWTdfeNGoSqhI3wJSLsyW5FaA7SAFrIvBIsLNMAE+isdqJ5HUT2j8V5yLiFxZw4dLyhYqIjAdJFkzgjKZv1CV5IEQBg6JRD6ERI0a0+AG51oK4HStRGQAAAABJRU5ErkJggg=="/>
+                    <span class="mx-3">Register Voter</span>
                 </a>
 
-                <a class="flex items-center mt-4 py-2 px-6 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100"
-                    href="/forms">
-                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z">
-                        </path>
-                    </svg>
+                <a class="flex items-center mt-4 py-2 px-6 bg-gray-700 bg-opacity-25 text-gray-100" href="">
+                    <img class="h-6 w-6" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABmJLR0QA/wD/AP+gvaeTAAAD8UlEQVR4nO2bSWgUQRSGvzHJJEYQBVHw4IKC4q6JJyXRUw7ixbuoVxE9eXABb+4xIrgFVBSjibjvICJeVET0ogiKCGqMOQRxw+zxUBl8XaleJunq6uj8UEzT79V77/+nq6e6qqeIfxsZYCYwBxgFtAF9TitKCBlgPfABRTjXvgCbgWJ3pdlHCXAeL3G93QWyYYGqgSagGegOCWirdQJ78iR/WYvxDXjW/ynP1wYFOe6IsKn9GAL5eqC8314OnBK2DmCCKVCayHcAuyKQzwJXtL77fER6KXxW6w7VWpCrQAURxotDRCWfQ53w26Ybm/CSTzuyqDqjkgc4K3w36sZmYayIs1ILyALXyI/8TOC38K/UHeTdPu2Xfb7kpwDvhf9j1HzBAxkwrcgC1/HWuj+kj07+OzDL5Jh2AeIg3wes9HNOswClwA2GTr4PNR8wIq0CxEG+Sxx3A1NNndIoQClwk6GR/wksA56LcxtMHdMmQFzkq/ttO8X5g6bOaRLA9FN3IKTPJOCd8P8FLBd2OQs0PmSlRYBS4BbxffMAI4E3wr7WFCQNApQBt4mXfAY4qdnHmQK5FsAW+WNazAEPQTm4FKAMuIN98heAEX4BXQmQJf4x70e+JCioCwGK8D6G2yLfSITFUBcC1Gp5D4X4m8hXCbuJfANK6FAkLcA6Lec5AsYngyN/hojkIVkBZqAmKrl891G//34Im+RkgMMMFDSvPYCkBCgGnohcb4HRAf5h3zzAVrz1nyD4ajIiKQG2izztBC+/TSOcPHiXxOsZBHlIRoCFqA2PXJ5NAb6VqO2sMPKghtQlYAuGpa6oSEKAByLHA/yLrUFtiuR8v+NPPjbYFqBGxO8C5hl8MqirQl4ln4FFlmrywKYAGbw3vjqDz3gGTodfAZMt1GOETQFWidhfgTHClgHWAK1aDQ+BsRZq8YVNAZ6K2LvF+QrgkZa7C9hBvPv4e1E30cDdZlsCzBFx24GJwALURKVHy/saw45NDOjoj98R5GRLgP0i7gvUOO/V8nWilrxGxpw7h0jcbAhQDLRosWXrQT2mTo8xpwnOBFiBmXgvalt7doy5gmDklsTLQvpdvA04jXoR400C+QORhAAXUTe80ai9/Huou3wqoE9D+wJswx1GboN6YvqXUBDAdQGuURDAdQGuURDAdQGuURDAdQGuURDAdQGuURDAdQGuoQvQI47T/LJ0vpBcJMcBArSK47nWykke88VxS5BjI3+XjW7YrChhyH+UNAQ5VuFdO7sOLGZ4Docsqnb9HeOlYR2P4r+CO9zb4SjKlQBHUlCsDfJ5rYEuRf0D8xPu/jg5lNYNfETtPi3Jh3gBBfxH+AO4CP0xEnmpyAAAAABJRU5ErkJggg=="/>
+                    <span class="mx-3">Create Elections</span>
+                </a>
 
-                    <span class="mx-3">Forms</span>
+                <a class="flex items-center mt-4 py-2 px-6 bg-gray-700 bg-opacity-25 text-gray-100" href="">
+                    <img class="h-6 w-6" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABmJLR0QA/wD/AP+gvaeTAAAC+UlEQVRoge3YS4hURxQG4G8yOtGoUREDGnyTjS5iCIQsxFFCkKARNz4iCoMh2bp070Jc6lIhKEqCj1XIg+wiOqgkGVAUwRF8xQeOooaZkYkOJouqxurWdvr23Olum/7hQFX999Q5595Tj3NpoYUWWsgJW/FfiQxjaZ5G3spzsjKYgT1oS+QUpuVppBaB1ATjamRnNd5P+kvwPE8DtQrkCo4n/R9wNk8DtQqkV3Egbxw+wh+4jBV19qUqzMJ3uINvsB7XhK+yoI5+VYwObMd97MXUV3APIvduzb2rEF/iKn7Cotc8Nxv78De+1UBHwMc4iR50ZtTrxl9YNgZ+VYz3cAi30KW6N9uGLcLXORznrDl24Rgm5zDXpDjXrmonGE1+jsOfGBjFHAUMxrmqPtcaZqGNFk0TyEhY5+Vaol6y7nWOjvRFpuGg4lqiHnLQCPVL06RW1l2iDfMUv4BHUQg1x9sJN4C+2J6JKQn3VDiDCFeZGQn3HDeElKoIWQP5UKgjbsf+RFzAKkzAddyMXHuUObHfHZ8Zjv25wgH4SEidT/EkcrPxGU5X6ljW1OrAeeEutQib41jB8X8T7pOEK+h2JvxDjE+4rxPubIlu7oE0LJomkGquBHOwO7bnlnAdCffOK3R34J/YLr2jdWF5bC/M6lT7CPxSzMePsf9YWAfPMIR7wmXvahy7L+w0Q+jHEVyMureFDBiK8itORO5uCXcGv0RbhMPwBs5lDbCALhyoVjlHHBB8KYusqTUdOxXvKN1CLQFrhX9YleBnoZqETViZcM+inb5SpXLIutg/wBqhGuwR0mdbwm8Q0rUnkelCzqdj7diY6G0V0qjAf47FWRyrZrH3YX9srxBK1hS/4/ukP1k48fcnY4P4okTvN2HdwFdZnWqa7bdpAsmaWgPC38OHif6J8o9XjH4cFRY5IR37s0yQNZBLwi011cujZt+i+GY8bIwDkdVAhRj2ohSoCk2zRlqBNBqaJpBy6FX/3z/lpHcM426hhRYaHf8D6STVhnv700QAAAAASUVORK5CYII="/>
+                    <span class="mx-3">Colleges</span>
+                </a>
+
+                <a class="flex items-center mt-4 py-2 px-6 bg-gray-700 bg-opacity-25 text-gray-100" href="">
+                    <img class="h-6 w-6" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABmJLR0QA/wD/AP+gvaeTAAAFjklEQVR4nO2b328VRRTHP22pRVsoVmxiS42/ffAf8MEWapqK1aqVKPpCjC9GaTC+SFFBI8T6g0Rjov4FPKjoA0YTrUICNlIgIvJQAtZGJEKpFagmoqLXhzmT2bt3Zu7ee3fvLqXfZBJ6zpmzZ747c2bO7AXmcWmjporPqgO6gAHgNuBGoAOoBaaAn4D9wOfACHC+irEliiuADcApIBexTQNbgCUpxBsrHgROYAZ2BNgM9AI3AJcDVwLXi+w14BD5RDxS9ahjQB0wDPyHGsgYsKKE/iuBUQwR7wILYo4xMdQA21CB/w2spbxcUwM8A/wjvrZzkZDwOirgs0BnDP46gTPi870Y/CWKAVSg54Fuh00DsA7YC/whbS8wCFzm6NODmk054NEY440VTcBxVJBPOmzage9wZ/+DYmPDU2IzhUqcmcOLqAC/Qe3tYTRgBn8cWAUskjaA2iFywLfYZ0ItcEBsXo459opRB/yMCq7LYbMOM/gWi74l4GOtw0e36H/FvVz6gV2Y5bUTuLfoCCp01CeBjXv8jYnNKo/NQ5hZ5IKeKf0W3Su4l9cWj8+KHb0huo0en7+LzSKPzWKxmfXYvCo2b4fk/SL/C3gWaJO2XmQ5Is6Echx9KfK7PX41Ab4E1kJxAnrEZjQk3yXy9ZY+Q6L7yuO3Ikf6nO/K4KC2uhxqmrvwMMWXwC1icyok1wS3Wfq0UZzYihz9KfJmj99BsZkAllr0S4Ef8SdBUEtInzWCOOeJux1zOCuKchzppeFb3w2oLS4HTAKrUYQ1owqeSdEdwJ3hARqxE6CX4ZClzwbRfeHxW5GjkyK/1uGzHngac6T1tTNiW+/wdZ3YnQzJV2Jy1xDqBbZLzPoF9Tp8VuxoD+6tqRV10aEHOILaLUZRM+ms/Huj6LTdPukbxl2i/9qi24qb2K1Fxl2Ro7dEtzkk7wCOie4o0YqjzlCfZSG93qKHQ/L7gNOeuE9jf0EFKMeRfisTmNJ3Aeot5VAzZHGUhwuaMfcBu1EnTcT3uMhvD9j3ARdEvgN199AorRv4RHQX8G/VZTuqB34RXY/IdL44SuHu0IGq72elfQzcGrJZAvxA/pbcK3+fwNQbV6GWUU6e6cLzmARuO4pX7OgFkR9EVYbTqBuhO0L9O4AZCmfWDIXTfTlm1jVicsmgJZ4dnpg19At8zjewch01YWaBToojlr4fiu5T1ICXAZ+J7AOL/c6Qzwnyt0ldY0S5crtTbMdsyjgcPUD+W33M0ndWdMG33SGycxb7xwP+/kXtUkHo2dQUIW59iJqxKeNy9GYg4Psteq2LKh8I6GxT19XPBad9XI5qUVM5hzoiP0H+pWhUAvSlqD57bMN+uZo5AkBtW+8EbHZjLkqiENCFWfM51EWr7ZYp2K/UlpyjAFaT/0XocAQCgjbHUXnFB33WKKXtSdRRCM3ASxQersII6qaATUTLRxcN6oF7KE5AH+5CaE6g1F0gUbgSyyWDLBLwPvAb6lC0HbgJuBn4CHWIcsldNUXmECUJBtu0tKhyW02RKRQjwFYjlCq31RSZQTECbDVCqXJbTZEZlLoLxCW3IotJsKqYJyDtANJGnAQsRJ3fj6F+zTGJurn1fSyZM1hIfvkabIfIv9/PVBKMC5sw5WsvqopbgfmWfxhDQtIBpkKA/pAR/mLUiqnvNQlzkgDfx9EwCXOSAP1ld7lDHyRhThIwLA89gv2DJhSSkBRSIaAJ8xO4YMILoxX1SxHbB5O4kAoBAFcD38vDx4Fr0giCFAmAbJCQKgGQPgmpEwDpkpAJAsB+CEoadWSIAKg+CWswsy4zqCYJ+uczaxJ8RlmoFgl6+tcVM0wDQRL2J/SMTK1/G5KuBkv2Xc3/OapRjTcUeVxp3AmGf+YeN2y/IJ3HPBz4H8Pyzs6RdXo7AAAAAElFTkSuQmCC"/>
+                    <span class="mx-3">Candidates</span>
+                </a>
+
+                <a class="flex items-center mt-4 py-2 px-6 bg-gray-700 bg-opacity-25 text-gray-100" href="">
+                    <img class="h-6 w-6" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAABmJLR0QA/wD/AP+gvaeTAAADlElEQVRoge3bTYxlQxTA8V8bo5HMDCOI7vExZswGEdGCYZiFbx2xwCST2A5LFlY2EmlsbIjExkZCQkRiQYiPidC+LYiFZAzx2UMi0cMk3aK1RdWT56q63ffm9nt92/0nN/X6Vp165/S9deqcOt2UcwXewxwWV/k1F3W9bgmbstyMhVVgSNVrAZNVjV2PmTjBA9hYdYIhsBFTgs4/CDYsm4ui4AGMNK7ayjGCLwXdL0wNOCojuCG230fhtrCI7+LnTakBOYPXLHUMPgn3YHNirjtxfkJmEjfV+K7GObqGzD48iFE83Hf/EjyBV3F9Qeb52B6bmXNdlD0r0/817sJf2ILH8QYerah7LYNHY1tUfrTQpvpybMAdJePmcC9mcZ6wZZ5sQAZ/hMP4sHD/AA5hOiHzjnLn9yvOxdZM/1eCsfAKJoSn3hi7BQX3NznpgNgv6L471ZlzWl8Iv9U3V0ipoZF7pQ9h2yAVaZCeH/hzqFoMiDNxRPDmp6UGLOW0RnAtLhA8aaX4dMAch9txPF4QcoFKnCh4xGFnP1Wvt/w3KPqHsif8mJBbzuA5YS9czcziY7yuRvw/LqyD33FGs3oNl9y2dLawfj/Ft4NTZ+XJGbwutn8MSpEG2YX7VXSwbY60XhN0vzzVWSeWnsTT2IuX+u6P4xM8ifsKMtOCT9hVMu925dnSwb6fe7H0L4mxPZuST7iOwRPC+dHF/m3wOTgVOxMyqXv9nIDP5bOl+Tj3LG7Ay3gfly1b60gdg+djW9ym5gttsa9sq/gNT8lnSwfjGPgMLwrbT2OUreHNuFv6xGOfkOYVuVF4MoOgNFvK0WanVSs9XLPkDD4c2y3ady59evw8WzawyHr8JLwaU9pRedgkHC4uCvF/ZYe8R0iih5391Kkt3ZozqmwNP4sr8a70VrOaadMyrE1/MW3G6j6saIzaxbS2UruYNoZvhDRrTZEzeIdw0nFVoq8rpkW6YlqiL0dXTCvQFdNK6LKlfnIG9wpRxwxKkQapVUwbEzziEe06iK9dTPtRODe6BR/gGfy8Ago2ySnCSWrtYto27UwPaxfTHhECgq6Y1mZyXnqr/1kxrfeqt7GYVspaDDweEg4gx1KddQyeFBxEMd0bF2LpqYTMNN5eYt7tuDpzFf+iaEJIU1NcKmxRO1KdXTFtGXTFtEhXTBsSXXrYT1dMi3TFtBZdC7itqrE9dgpBQ1v+FW8a15QZ9DejWB72kNvQTQAAAABJRU5ErkJggg=="/>
+                    <span class="mx-3">Update Master List</span>
                 </a>
             </nav>
         </div>
-        <div class="flex-1 flex flex-col overflow-hidden">
-            <header class="flex justify-between items-center py-4 px-6 bg-white border-b-4 border-indigo-600">
-                <div class="flex items-center">
-                    <button @click="sidebarOpen = true" class="text-gray-500 focus:outline-none lg:hidden">
-                        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M4 6H20M4 12H20M4 18H11" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round"></path>
-                        </svg>
-                    </button>
-
-                    <div class="relative mx-4 lg:mx-0">
-                        <span class="absolute inset-y-0 left-0 pl-3 flex items-center">
-                            <svg class="h-5 w-5 text-gray-500" viewBox="0 0 24 24" fill="none">
-                                <path
-                                    d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
-                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                </path>
-                            </svg>
-                        </span>
-
-                        <input class="form-input w-32 sm:w-64 rounded-md pl-10 pr-4 focus:border-indigo-600" type="text"
-                            placeholder="Search">
-                    </div>
-                </div>
-
-                <div class="flex items-center">
-                    <div x-data="{ notificationOpen: false }" class="relative">
-                        <button @click="notificationOpen = ! notificationOpen"
-                            class="flex mx-4 text-gray-600 focus:outline-none">
-                            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M15 17H20L18.5951 15.5951C18.2141 15.2141 18 14.6973 18 14.1585V11C18 8.38757 16.3304 6.16509 14 5.34142V5C14 3.89543 13.1046 3 12 3C10.8954 3 10 3.89543 10 5V5.34142C7.66962 6.16509 6 8.38757 6 11V14.1585C6 14.6973 5.78595 15.2141 5.40493 15.5951L4 17H9M15 17V18C15 19.6569 13.6569 21 12 21C10.3431 21 9 19.6569 9 18V17M15 17H9"
-                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                </path>
-                            </svg>
-                        </button>
-
-                        <div x-show="notificationOpen" @click="notificationOpen = false"
-                            class="fixed inset-0 h-full w-full z-10" style="display: none;"></div>
-
-                        <div x-show="notificationOpen"
-                            class="absolute right-0 mt-2 w-80 bg-white rounded-lg shadow-xl overflow-hidden z-10"
-                            style="width: 20rem; display: none;">
-                            <a href="#"
-                                class="flex items-center px-4 py-3 text-gray-600 hover:text-white hover:bg-indigo-600 -mx-2">
-                                <img class="h-8 w-8 rounded-full object-cover mx-1"
-                                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=334&amp;q=80"
-                                    alt="avatar">
-                                <p class="text-sm mx-2">
-                                    <span class="font-bold" href="#">Sara Salah</span> replied on the <span
-                                        class="font-bold text-indigo-400" href="#">Upload Image</span> artical . 2m
-                                </p>
-                            </a>
-                            <a href="#"
-                                class="flex items-center px-4 py-3 text-gray-600 hover:text-white hover:bg-indigo-600 -mx-2">
-                                <img class="h-8 w-8 rounded-full object-cover mx-1"
-                                    src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=634&amp;q=80"
-                                    alt="avatar">
-                                <p class="text-sm mx-2">
-                                    <span class="font-bold" href="#">Slick Net</span> start following you . 45m
-                                </p>
-                            </a>
-                            <a href="#"
-                                class="flex items-center px-4 py-3 text-gray-600 hover:text-white hover:bg-indigo-600 -mx-2">
-                                <img class="h-8 w-8 rounded-full object-cover mx-1"
-                                    src="https://images.unsplash.com/photo-1450297350677-623de575f31c?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=334&amp;q=80"
-                                    alt="avatar">
-                                <p class="text-sm mx-2">
-                                    <span class="font-bold" href="#">Jane Doe</span> Like Your reply on <span
-                                        class="font-bold text-indigo-400" href="#">Test with TDD</span> artical . 1h
-                                </p>
-                            </a>
-                            <a href="#"
-                                class="flex items-center px-4 py-3 text-gray-600 hover:text-white hover:bg-indigo-600 -mx-2">
-                                <img class="h-8 w-8 rounded-full object-cover mx-1"
-                                    src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=398&amp;q=80"
-                                    alt="avatar">
-                                <p class="text-sm mx-2">
-                                    <span class="font-bold" href="#">Abigail Bennett</span> start following you . 3h
-                                </p>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div x-data="{ dropdownOpen: false }" class="relative">
-                        <button @click="dropdownOpen = ! dropdownOpen"
-                            class="relative block h-8 w-8 rounded-full overflow-hidden shadow focus:outline-none">
-                            <img class="h-full w-full object-cover"
-                                src="https://images.unsplash.com/photo-1528892952291-009c663ce843?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=296&amp;q=80"
-                                alt="Your avatar">
-                        </button>
-
-                        <div x-show="dropdownOpen" @click="dropdownOpen = false" class="fixed inset-0 h-full w-full z-10"
-                            style="display: none;"></div>
-
-                        <div x-show="dropdownOpen"
-                            class="absolute right-0 mt-2 w-48 bg-white rounded-md overflow-hidden shadow-xl z-10"
-                            style="display: none;">
-                            <a href="#"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">Profile</a>
-                            <a href="#"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">Products</a>
-                            <a href="/login"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">Logout</a>
-                        </div>
-                    </div>
-                </div>
-            </header>
             <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
                 <div class="container mx-auto px-6 py-8">
                     <h3 class="text-gray-700 text-3xl font-medium">Dashboard</h3>
@@ -261,347 +140,8 @@
                     <div class="mt-8">
 
                     </div>
-
-                    <div class="flex flex-col mt-8">
-                        <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
-                            <div
-                                class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
-                                <table class="min-w-full">
-                                    <thead>
-                                        <tr>
-                                            <th
-                                                class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                                                Name</th>
-                                            <th
-                                                class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                                                Title</th>
-                                            <th
-                                                class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                                                Status</th>
-                                            <th
-                                                class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                                                Role</th>
-                                            <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
-                                        </tr>
-                                    </thead>
-
-                                    <tbody class="bg-white">
-                                        <tr>
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                <div class="flex items-center">
-                                                    <div class="flex-shrink-0 h-10 w-10">
-                                                        <img class="h-10 w-10 rounded-full"
-                                                            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80"
-                                                            alt="">
-                                                    </div>
-
-                                                    <div class="ml-4">
-                                                        <div class="text-sm leading-5 font-medium text-gray-900">John Doe
-                                                        </div>
-                                                        <div class="text-sm leading-5 text-gray-500">john@example.com</div>
-                                                    </div>
-                                                </div>
-                                            </td>
-
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                <div class="text-sm leading-5 text-gray-900">Software Engineer</div>
-                                                <div class="text-sm leading-5 text-gray-500">Web dev</div>
-                                            </td>
-
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                <span
-                                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
-                                            </td>
-
-                                            <td
-                                                class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">
-                                                Owner</td>
-
-                                            <td
-                                                class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
-                                                <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                <div class="flex items-center">
-                                                    <div class="flex-shrink-0 h-10 w-10">
-                                                        <img class="h-10 w-10 rounded-full"
-                                                            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80"
-                                                            alt="">
-                                                    </div>
-
-                                                    <div class="ml-4">
-                                                        <div class="text-sm leading-5 font-medium text-gray-900">John Doe
-                                                        </div>
-                                                        <div class="text-sm leading-5 text-gray-500">john@example.com</div>
-                                                    </div>
-                                                </div>
-                                            </td>
-
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                <div class="text-sm leading-5 text-gray-900">Software Engineer</div>
-                                                <div class="text-sm leading-5 text-gray-500">Web dev</div>
-                                            </td>
-
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                <span
-                                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
-                                            </td>
-
-                                            <td
-                                                class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">
-                                                Owner</td>
-
-                                            <td
-                                                class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
-                                                <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                <div class="flex items-center">
-                                                    <div class="flex-shrink-0 h-10 w-10">
-                                                        <img class="h-10 w-10 rounded-full"
-                                                            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80"
-                                                            alt="">
-                                                    </div>
-
-                                                    <div class="ml-4">
-                                                        <div class="text-sm leading-5 font-medium text-gray-900">John Doe
-                                                        </div>
-                                                        <div class="text-sm leading-5 text-gray-500">john@example.com</div>
-                                                    </div>
-                                                </div>
-                                            </td>
-
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                <div class="text-sm leading-5 text-gray-900">Software Engineer</div>
-                                                <div class="text-sm leading-5 text-gray-500">Web dev</div>
-                                            </td>
-
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                <span
-                                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
-                                            </td>
-
-                                            <td
-                                                class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">
-                                                Owner</td>
-
-                                            <td
-                                                class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
-                                                <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                <div class="flex items-center">
-                                                    <div class="flex-shrink-0 h-10 w-10">
-                                                        <img class="h-10 w-10 rounded-full"
-                                                            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80"
-                                                            alt="">
-                                                    </div>
-
-                                                    <div class="ml-4">
-                                                        <div class="text-sm leading-5 font-medium text-gray-900">John Doe
-                                                        </div>
-                                                        <div class="text-sm leading-5 text-gray-500">john@example.com</div>
-                                                    </div>
-                                                </div>
-                                            </td>
-
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                <div class="text-sm leading-5 text-gray-900">Software Engineer</div>
-                                                <div class="text-sm leading-5 text-gray-500">Web dev</div>
-                                            </td>
-
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                <span
-                                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
-                                            </td>
-
-                                            <td
-                                                class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">
-                                                Owner</td>
-
-                                            <td
-                                                class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
-                                                <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                <div class="flex items-center">
-                                                    <div class="flex-shrink-0 h-10 w-10">
-                                                        <img class="h-10 w-10 rounded-full"
-                                                            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80"
-                                                            alt="">
-                                                    </div>
-
-                                                    <div class="ml-4">
-                                                        <div class="text-sm leading-5 font-medium text-gray-900">John Doe
-                                                        </div>
-                                                        <div class="text-sm leading-5 text-gray-500">john@example.com</div>
-                                                    </div>
-                                                </div>
-                                            </td>
-
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                <div class="text-sm leading-5 text-gray-900">Software Engineer</div>
-                                                <div class="text-sm leading-5 text-gray-500">Web dev</div>
-                                            </td>
-
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                <span
-                                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
-                                            </td>
-
-                                            <td
-                                                class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">
-                                                Owner</td>
-
-                                            <td
-                                                class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
-                                                <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                <div class="flex items-center">
-                                                    <div class="flex-shrink-0 h-10 w-10">
-                                                        <img class="h-10 w-10 rounded-full"
-                                                            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80"
-                                                            alt="">
-                                                    </div>
-
-                                                    <div class="ml-4">
-                                                        <div class="text-sm leading-5 font-medium text-gray-900">John Doe
-                                                        </div>
-                                                        <div class="text-sm leading-5 text-gray-500">john@example.com</div>
-                                                    </div>
-                                                </div>
-                                            </td>
-
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                <div class="text-sm leading-5 text-gray-900">Software Engineer</div>
-                                                <div class="text-sm leading-5 text-gray-500">Web dev</div>
-                                            </td>
-
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                <span
-                                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
-                                            </td>
-
-                                            <td
-                                                class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">
-                                                Owner</td>
-
-                                            <td
-                                                class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
-                                                <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                <div class="flex items-center">
-                                                    <div class="flex-shrink-0 h-10 w-10">
-                                                        <img class="h-10 w-10 rounded-full"
-                                                            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80"
-                                                            alt="">
-                                                    </div>
-
-                                                    <div class="ml-4">
-                                                        <div class="text-sm leading-5 font-medium text-gray-900">John Doe
-                                                        </div>
-                                                        <div class="text-sm leading-5 text-gray-500">john@example.com</div>
-                                                    </div>
-                                                </div>
-                                            </td>
-
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                <div class="text-sm leading-5 text-gray-900">Software Engineer</div>
-                                                <div class="text-sm leading-5 text-gray-500">Web dev</div>
-                                            </td>
-
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                <span
-                                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
-                                            </td>
-
-                                            <td
-                                                class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">
-                                                Owner</td>
-
-                                            <td
-                                                class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
-                                                <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                <div class="flex items-center">
-                                                    <div class="flex-shrink-0 h-10 w-10">
-                                                        <img class="h-10 w-10 rounded-full"
-                                                            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80"
-                                                            alt="">
-                                                    </div>
-
-                                                    <div class="ml-4">
-                                                        <div class="text-sm leading-5 font-medium text-gray-900">John Doe
-                                                        </div>
-                                                        <div class="text-sm leading-5 text-gray-500">john@example.com</div>
-                                                    </div>
-                                                </div>
-                                            </td>
-
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                <div class="text-sm leading-5 text-gray-900">Software Engineer</div>
-                                                <div class="text-sm leading-5 text-gray-500">Web dev</div>
-                                            </td>
-
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                <span
-                                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
-                                            </td>
-
-                                            <td
-                                                class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">
-                                                Owner</td>
-
-                                            <td
-                                                class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
-                                                <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </main>
-        </div>
-    </div>
-
-    <div class="fixed inset-x-0 lg:inset-x-auto bottom-6 lg:right-8 xl:right-10 xl:bottom-8">
-        <div class="lg:w-72 px-6 lg:px-0">
-            <div class="p-2 bg-blue-600 rounded-lg shadow-lg sm:p-3">
-                <div class="flex flex-wrap items-center justify-between">
-                    <a target="_blank" href="https://www.buymeacoffee.com/khatabwedaa" class="flex items-center flex-1 w-0">
-                        <span class="flex p-2 bg-blue-800 rounded-lg">
-                            <svg class="h-6 w-6 text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M5.12954 3.00772C5.48563 2.38457 6.14831 2 6.86603 2H17.134C17.8517 2 18.5144 2.38457 18.8704 3.00772L20.0133 5.00772C20.6612 6.14163 20.0618 7.51107 18.9235 7.89532C18.9276 7.97661 18.9269 8.0591 18.9209 8.14249L18.0638 20.1425C17.989 21.1891 17.1181 22 16.0689 22H7.9311C6.88182 22 6.01094 21.1891 5.93618 20.1425L5.07904 8.14249C5.07308 8.0591 5.07231 7.97661 5.07645 7.89531C3.93813 7.51105 3.33874 6.14162 3.98668 5.00772L5.12954 3.00772ZM7.07396 8L7.28824 11H16.7117L16.926 8H7.07396ZM7.71681 17L7.9311 20H16.0689L16.2831 17H7.71681ZM18.2768 6L17.134 4L6.86603 4L5.72317 6H18.2768Z" fill="currentColor"></path>
-                            </svg>
-
-                        </span>
-
-                        <p class="ml-3 font-medium tracking-wide text-white truncate">
-                            By me a coffee
-                        </p>
-                    </a>
-                </div>
-            </div>
         </div>
     </div>
 </div>
