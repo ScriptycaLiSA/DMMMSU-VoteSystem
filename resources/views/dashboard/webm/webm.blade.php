@@ -6,15 +6,28 @@
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
     <div x-data="{ sidebarOpen: false }" class="flex h-screen bg-gray-200">
-        <div :class="sidebarOpen ? 'block' : 'hidden'" @click="sidebarOpen = false" class="fixed z-20 inset-0 bg-black opacity-50 transition-opacity lg:hidden"></div>
+        <div :class="sidebarOpen ? 'block' : 'hidden'" @click="sidebarOpen = false" class="fixed z-20 inset-0 bg-gray-900 opacity-50 transition-opacity lg:hidden"></div>
 
         <div :class="sidebarOpen ? 'translate-x-0 ease-out' : '-translate-x-full ease-in'" class="fixed z-30 inset-y-0 left-0 w-64 transition duration-300 transform bg-gray-900 overflow-y-auto lg:translate-x-0 lg:static lg:inset-0">
-            <div class="flex items-center justify-center mt-8">
-                <div class="flex items-center">
-                    <span class="text-black text-2xl mx-2 font-semibold">Admin Name</span>
+
+            {{-- Container for image and name placeholder webm --}}
+            <div class="flex items-center justify-center mt-10 bg-green">
+                <div class="flex items-left">
+                  <div class="relative shadow mx-auto hll-24 w-24 -my-12 border-white rounded-full overflow-hidden border-4">
+                      <img class="object-cover w-full h-full" src="https://scontent.fmnl25-1.fna.fbcdn.net/v/t1.6435-9/188390088_4237818132949817_1445088910336767925_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=09cbfe&_nc_eui2=AeGientYW3iMPbGyVXOu6cm25yq15sX8_9znKrXmxfz_3KvGnCj5OjJ5vQwhYkHqi0qBnDDRpxETMZqQ8IreMMWf&_nc_ohc=ONQj3ZF4yFkAX8nFzzh&_nc_ht=scontent.fmnl25-1.fna&oh=00_AT-ZGw_igKYHg7pUxmkMaMSAGeyTDUcJFw71FdINgwNr8g&oe=621CFCAB">
+                  </div>
+                </div>
+                <div class="mt-auto">
+                  <h1 class="text-lg text-center font-semibold">
+                    Superadmin
+                  </h1>
+                  <p class="text-sm text-gray-600 text-center">
+                    Organization | Name
+                  </p>
                 </div>
             </div>
 
+            <div class="flex items-center justify-right mt-2">
             <nav class="mt-10">
                 <a class="flex items-center mt-4 py-2 px-6 bg-gray-700 bg-opacity-25 text-gray-100" href="">
                     <img class="h-6 w-6" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABmJLR0QA/wD/AP+gvaeTAAAA+0lEQVR4nO2ZUQqCUBQFD324qLD1ZQvVbdTPy0SSEHrOA2dACoLOMH3FTUTedEkeSaYkz0rPmGQoW63tZ6g4vH6GBvczlg+v3z78E30+v0Rr+3Od2mztIPuXAwabxgC0AI0BaAEaA9ACNAagBWgMQAvQGIAWoDEALUBjAFqAxgC0AI0BaAGaZYCpvPYV926rrSX0/qGHiXuD++mKxLjzy/Y8v05j5L6InBz6Pk/v4/d5eh+/z9P7c53abO0g+/4XoAVoDEAL0BiAFqAxAC1AYwBagMYAtACNAWgBGgPQAjQGoAVoDEAL0Bhg8Z6+z9P7+H2e3sfv8/S+nJIXmkLImDnbzzAAAAAASUVORK5CYII="/>
@@ -45,14 +58,18 @@
                     <img class="h-6 w-6" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABmJLR0QA/wD/AP+gvaeTAAAFjklEQVR4nO2b328VRRTHP22pRVsoVmxiS42/ffAf8MEWapqK1aqVKPpCjC9GaTC+SFFBI8T6g0Rjov4FPKjoA0YTrUICNlIgIvJQAtZGJEKpFagmoqLXhzmT2bt3Zu7ee3fvLqXfZBJ6zpmzZ747c2bO7AXmcWmjporPqgO6gAHgNuBGoAOoBaaAn4D9wOfACHC+irEliiuADcApIBexTQNbgCUpxBsrHgROYAZ2BNgM9AI3AJcDVwLXi+w14BD5RDxS9ahjQB0wDPyHGsgYsKKE/iuBUQwR7wILYo4xMdQA21CB/w2spbxcUwM8A/wjvrZzkZDwOirgs0BnDP46gTPi870Y/CWKAVSg54Fuh00DsA7YC/whbS8wCFzm6NODmk054NEY440VTcBxVJBPOmzage9wZ/+DYmPDU2IzhUqcmcOLqAC/Qe3tYTRgBn8cWAUskjaA2iFywLfYZ0ItcEBsXo459opRB/yMCq7LYbMOM/gWi74l4GOtw0e36H/FvVz6gV2Y5bUTuLfoCCp01CeBjXv8jYnNKo/NQ5hZ5IKeKf0W3Su4l9cWj8+KHb0huo0en7+LzSKPzWKxmfXYvCo2b4fk/SL/C3gWaJO2XmQ5Is6Echx9KfK7PX41Ab4E1kJxAnrEZjQk3yXy9ZY+Q6L7yuO3Ikf6nO/K4KC2uhxqmrvwMMWXwC1icyok1wS3Wfq0UZzYihz9KfJmj99BsZkAllr0S4Ef8SdBUEtInzWCOOeJux1zOCuKchzppeFb3w2oLS4HTAKrUYQ1owqeSdEdwJ3hARqxE6CX4ZClzwbRfeHxW5GjkyK/1uGzHngac6T1tTNiW+/wdZ3YnQzJV2Jy1xDqBbZLzPoF9Tp8VuxoD+6tqRV10aEHOILaLUZRM+ms/Huj6LTdPukbxl2i/9qi24qb2K1Fxl2Ro7dEtzkk7wCOie4o0YqjzlCfZSG93qKHQ/L7gNOeuE9jf0EFKMeRfisTmNJ3Aeot5VAzZHGUhwuaMfcBu1EnTcT3uMhvD9j3ARdEvgN199AorRv4RHQX8G/VZTuqB34RXY/IdL44SuHu0IGq72elfQzcGrJZAvxA/pbcK3+fwNQbV6GWUU6e6cLzmARuO4pX7OgFkR9EVYbTqBuhO0L9O4AZCmfWDIXTfTlm1jVicsmgJZ4dnpg19At8zjewch01YWaBToojlr4fiu5T1ICXAZ+J7AOL/c6Qzwnyt0ldY0S5crtTbMdsyjgcPUD+W33M0ndWdMG33SGycxb7xwP+/kXtUkHo2dQUIW59iJqxKeNy9GYg4Psteq2LKh8I6GxT19XPBad9XI5qUVM5hzoiP0H+pWhUAvSlqD57bMN+uZo5AkBtW+8EbHZjLkqiENCFWfM51EWr7ZYp2K/UlpyjAFaT/0XocAQCgjbHUXnFB33WKKXtSdRRCM3ASxQersII6qaATUTLRxcN6oF7KE5AH+5CaE6g1F0gUbgSyyWDLBLwPvAb6lC0HbgJuBn4CHWIcsldNUXmECUJBtu0tKhyW02RKRQjwFYjlCq31RSZQTECbDVCqXJbTZEZlLoLxCW3IotJsKqYJyDtANJGnAQsRJ3fj6F+zTGJurn1fSyZM1hIfvkabIfIv9/PVBKMC5sw5WsvqopbgfmWfxhDQtIBpkKA/pAR/mLUiqnvNQlzkgDfx9EwCXOSAP1ld7lDHyRhThIwLA89gv2DJhSSkBRSIaAJ8xO4YMILoxX1SxHbB5O4kAoBAFcD38vDx4Fr0giCFAmAbJCQKgGQPgmpEwDpkpAJAsB+CEoadWSIAKg+CWswsy4zqCYJ+uczaxJ8RlmoFgl6+tcVM0wDQRL2J/SMTK1/G5KuBkv2Xc3/OapRjTcUeVxp3AmGf+YeN2y/IJ3HPBz4H8Pyzs6RdXo7AAAAAElFTkSuQmCC"/>
                     <span class="mx-3">Candidates</span>
                 </a>
-
-                <a class="flex items-center mt-4 py-2 px-6 bg-gray-700 bg-opacity-25 text-gray-100" href="">
-                    <img class="h-6 w-6" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAABmJLR0QA/wD/AP+gvaeTAAADlElEQVRoge3bTYxlQxTA8V8bo5HMDCOI7vExZswGEdGCYZiFbx2xwCST2A5LFlY2EmlsbIjExkZCQkRiQYiPidC+LYiFZAzx2UMi0cMk3aK1RdWT56q63ffm9nt92/0nN/X6Vp165/S9deqcOt2UcwXewxwWV/k1F3W9bgmbstyMhVVgSNVrAZNVjV2PmTjBA9hYdYIhsBFTgs4/CDYsm4ui4AGMNK7ayjGCLwXdL0wNOCojuCG230fhtrCI7+LnTakBOYPXLHUMPgn3YHNirjtxfkJmEjfV+K7GObqGzD48iFE83Hf/EjyBV3F9Qeb52B6bmXNdlD0r0/817sJf2ILH8QYerah7LYNHY1tUfrTQpvpybMAdJePmcC9mcZ6wZZ5sQAZ/hMP4sHD/AA5hOiHzjnLn9yvOxdZM/1eCsfAKJoSn3hi7BQX3NznpgNgv6L471ZlzWl8Iv9U3V0ipoZF7pQ9h2yAVaZCeH/hzqFoMiDNxRPDmp6UGLOW0RnAtLhA8aaX4dMAch9txPF4QcoFKnCh4xGFnP1Wvt/w3KPqHsif8mJBbzuA5YS9czcziY7yuRvw/LqyD33FGs3oNl9y2dLawfj/Ft4NTZ+XJGbwutn8MSpEG2YX7VXSwbY60XhN0vzzVWSeWnsTT2IuX+u6P4xM8ifsKMtOCT9hVMu925dnSwb6fe7H0L4mxPZuST7iOwRPC+dHF/m3wOTgVOxMyqXv9nIDP5bOl+Tj3LG7Ay3gfly1b60gdg+djW9ym5gttsa9sq/gNT8lnSwfjGPgMLwrbT2OUreHNuFv6xGOfkOYVuVF4MoOgNFvK0WanVSs9XLPkDD4c2y3ady59evw8WzawyHr8JLwaU9pRedgkHC4uCvF/ZYe8R0iih5391Kkt3ZozqmwNP4sr8a70VrOaadMyrE1/MW3G6j6saIzaxbS2UruYNoZvhDRrTZEzeIdw0nFVoq8rpkW6YlqiL0dXTCvQFdNK6LKlfnIG9wpRxwxKkQapVUwbEzziEe06iK9dTPtRODe6BR/gGfy8Ago2ySnCSWrtYto27UwPaxfTHhECgq6Y1mZyXnqr/1kxrfeqt7GYVspaDDweEg4gx1KddQyeFBxEMd0bF2LpqYTMNN5eYt7tuDpzFf+iaEJIU1NcKmxRO1KdXTFtGXTFtEhXTBsSXXrYT1dMi3TFtBZdC7itqrE9dgpBQ1v+FW8a15QZ9DejWB72kNvQTQAAAABJRU5ErkJggg=="/>
-                    <span class="mx-3">Update Master List</span>
-                </a>
             </nav>
+          </div>
+          <div class="flex items-center justify-right mt-2">
+            <nav class="mt-6">
+            <a class="flex items-center mt-4 py-2 px-6 bg-gray-700 bg-opacity-25 text-gray-100" href="">
+              <img class="h-6 w-6" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAABmJLR0QA/wD/AP+gvaeTAAADlElEQVRoge3bTYxlQxTA8V8bo5HMDCOI7vExZswGEdGCYZiFbx2xwCST2A5LFlY2EmlsbIjExkZCQkRiQYiPidC+LYiFZAzx2UMi0cMk3aK1RdWT56q63ffm9nt92/0nN/X6Vp165/S9deqcOt2UcwXewxwWV/k1F3W9bgmbstyMhVVgSNVrAZNVjV2PmTjBA9hYdYIhsBFTgs4/CDYsm4ui4AGMNK7ayjGCLwXdL0wNOCojuCG230fhtrCI7+LnTakBOYPXLHUMPgn3YHNirjtxfkJmEjfV+K7GObqGzD48iFE83Hf/EjyBV3F9Qeb52B6bmXNdlD0r0/817sJf2ILH8QYerah7LYNHY1tUfrTQpvpybMAdJePmcC9mcZ6wZZ5sQAZ/hMP4sHD/AA5hOiHzjnLn9yvOxdZM/1eCsfAKJoSn3hi7BQX3NznpgNgv6L471ZlzWl8Iv9U3V0ipoZF7pQ9h2yAVaZCeH/hzqFoMiDNxRPDmp6UGLOW0RnAtLhA8aaX4dMAch9txPF4QcoFKnCh4xGFnP1Wvt/w3KPqHsif8mJBbzuA5YS9czcziY7yuRvw/LqyD33FGs3oNl9y2dLawfj/Ft4NTZ+XJGbwutn8MSpEG2YX7VXSwbY60XhN0vzzVWSeWnsTT2IuX+u6P4xM8ifsKMtOCT9hVMu925dnSwb6fe7H0L4mxPZuST7iOwRPC+dHF/m3wOTgVOxMyqXv9nIDP5bOl+Tj3LG7Ay3gfly1b60gdg+djW9ym5gttsa9sq/gNT8lnSwfjGPgMLwrbT2OUreHNuFv6xGOfkOYVuVF4MoOgNFvK0WanVSs9XLPkDD4c2y3ady59evw8WzawyHr8JLwaU9pRedgkHC4uCvF/ZYe8R0iih5391Kkt3ZozqmwNP4sr8a70VrOaadMyrE1/MW3G6j6saIzaxbS2UruYNoZvhDRrTZEzeIdw0nFVoq8rpkW6YlqiL0dXTCvQFdNK6LKlfnIG9wpRxwxKkQapVUwbEzziEe06iK9dTPtRODe6BR/gGfy8Ago2ySnCSWrtYto27UwPaxfTHhECgq6Y1mZyXnqr/1kxrfeqt7GYVspaDDweEg4gx1KddQyeFBxEMd0bF2LpqYTMNN5eYt7tuDpzFf+iaEJIU1NcKmxRO1KdXTFtGXTFtEhXTBsSXXrYT1dMi3TFtBZdC7itqrE9dgpBQ1v+FW8a15QZ9DejWB72kNvQTQAAAABJRU5ErkJggg=="/>
+              <span class="mx-3">Update Master List</span>
+            </a>
+          </nav>
+          </div>
         </div>
-            <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
+            <main class="flex-1 overflow-x-hidden overflow-y-auto bg-blue">
                 <div class="container mx-auto px-6 py-8">
                     <h3 class="text-gray-700 text-3xl font-medium">Dashboard</h3>
 
@@ -85,7 +102,7 @@
                                     </div>
 
                                     <div class="mx-5">
-                                        <h4 class="text-2xl font-semibold text-gray-700">8,282</h4>
+                                        <h4 class="text-2xl font-semibold text-gray-700">%data</h4>
                                         <div class="text-gray-500">New Users</div>
                                     </div>
                                 </div>
